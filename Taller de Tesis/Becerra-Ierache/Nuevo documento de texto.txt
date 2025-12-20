@@ -1,0 +1,19 @@
+https://www.mdpi.com/2076-3417/14/23/11014
+applsci-14-11014.pdf
+
+https://www.mdpi.com/2079-9292/13/23/4643
+electronics-13-04643.pdf
+
+https://arxiv.org/abs/2403.14403
+2403.14403v2.pdf
+
+https://aclanthology.org/2025.coling-main.218.pdf
+2025.coling-main.218.pdf
+Xiaqiang Tang, Qiang Gao, Jian Li, Nan Du, Qi Li y Sihong Xie. 2025. MBA-RAG: un enfoque Bandit para la recuperación adaptativa y la generación aumentada mediante la complejidad de las preguntas . En Actas de la 31.ª Conferencia Internacional sobre Lingüística Computacional , páginas 3248–3254, Abu Dabi, EAU. Asociación de Lingüística Computacional.
+
+https://uvadoc.uva.es/bitstream/handle/10324/71509/TFM-G1993.pdf?sequence=1&isAllowed=y
+Implementación de técnicas de RAG (Retrieval
+Augmented Generation) sobre LLM (Large Language
+Models) para la extracción y generación de documentos
+en las entidades públicas
+TFM-G1993.pdf
