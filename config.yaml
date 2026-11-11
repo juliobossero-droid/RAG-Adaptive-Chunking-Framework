@@ -1,0 +1,78 @@
+# chunklab: configuracion del experimento de chunking.
+# Todo lo que afecta el resultado entra en el hash de configuracion (ver manifest.json).
+run:
+  label: "chunking_v1"
+  seed: 42
+  output_dir: "./runs"
+  # cache_dir: "./cache"        # opcional; por defecto <output_dir>/_cache
+
+corpus:
+  documents_dir: "C:/LC"        # carpeta con los .txt (se leen subcarpetas)
+  pattern: "*.txt"
+  max_documents: null           # null = corpus completo; N = muestra ALEATORIA reproducible
+  sample_seed: 42
+  # document_list: "./doc_ids.txt"   # opcional: un doc_id por linea (anula max_documents)
+
+embedding:
+  backend: "sentence-transformers"   # "hashing" solo para simulacros sin validez cientifica
+  model: "intfloat/multilingual-e5-base"
+  revision: null                     # fijar un commit del modelo para reproducibilidad total
+  device: "cpu"                      # "cuda" si hay GPU
+  batch_size: 32
+  sentence_prefix: "query: "         # e5 lo requiere; usar "" con otros modelos
+
+# Rango de tamano COMUN a todas las estrategias, en tokens del modelo.
+# max_tokens + safety_margin_tokens debe ser <= limite efectivo del modelo (se verifica).
+common:
+  min_tokens: 64
+  max_tokens: 256
+  safety_margin_tokens: 8
+
+sentences:
+  extra_abbreviations: []            # abreviaturas adicionales (sin punto), ej.: ["reg", "fte"]
+
+strategies:
+  # --- las cuatro estrategias del experimento ---
+  fixed:
+    kind: fixed_tokens
+    window_tokens: 256
+    overlap_tokens: 50
+  semantic:
+    kind: semantic_dp
+    min_sentences: 3
+    max_sentences: 15
+    ideal_sentences: 9
+    lam: 0.4
+    objective: sentence_weighted
+  louvain:
+    kind: louvain_graph
+    tau: 0.72
+    gamma: 1.0
+    window: null          # null = grafo completo (definicion de los articulos)
+    contiguous: false
+  legal:
+    kind: legal_structural
+    min_sentences: 3
+    max_sentences: 15
+    ideal_sentences: 9
+    lam: 0.4
+    objective: sentence_weighted
+    min_section_tokens: 12
+
+  # --- controles (no son opciones del agente) ---
+  fixed_nooverlap:
+    kind: fixed_tokens
+    window_tokens: 256
+    overlap_tokens: 0
+  sentence_pack:
+    kind: sentence_pack
+    target_tokens: 256
+
+  # --- variante opcional ---
+  louvain_contiguous:
+    enabled: false
+    kind: louvain_graph
+    tau: 0.72
+    gamma: 1.0
+    window: null
+    contiguous: true

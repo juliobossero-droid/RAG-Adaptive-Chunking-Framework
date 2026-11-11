@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chunklab"
+version = "1.0.0"
+description = "Banco de pruebas de estrategias de chunking para RAG sobre documentos judiciales"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<3",
+  "PyYAML>=6,<7",
+  "networkx>=3.2,<4",
+  "tqdm>=4.66,<5",
+]
+
+[project.optional-dependencies]
+models = ["transformers>=4.40", "sentence-transformers>=3.0,<6", "torch>=2.2"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+chunklab = "chunklab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

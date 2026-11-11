@@ -1,0 +1,11 @@
+# Dependencias minimas. Para reproducibilidad exacta, despues de instalar ejecutar:
+#   pip freeze > requirements.lock
+# y conservar ese archivo junto con los resultados.
+numpy>=1.26,<3
+PyYAML>=6,<7
+networkx>=3.2,<4
+tqdm>=4.66,<5
+transformers>=4.40
+sentence-transformers>=3.0,<6
+torch>=2.2
+pytest>=8

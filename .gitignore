@@ -1,0 +1,23 @@
+
+# Entorno Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Resultados y datos experimentales
+runs/
+auditoria_truncamiento/
+pruebas_iniciales.txt
+*.bak
+
+# Corpus y archivos potencialmente sensibles
+LC/
+*.jsonl
+*.sqlite3
+*.parquet
+
+# Configuraciones locales
+.env
+.env.*
